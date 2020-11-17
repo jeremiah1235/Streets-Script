@@ -2603,8 +2603,8 @@ end,"aimmode",{"aimlockmode"},"LeftClick/RightClick/NoMouse/Closest (Sets the wa
 AddCommand(function(Arguments)
 	if Arguments[1] and tonumber(Arguments[1]) then
 		AimbotVelocity = tonumber(Arguments[1])
-		if AimMode ~= "OldPrediction" and AimMode ~= "Prediction" then 
-			notif("Note:","This only works with aimtarget oldprediction/prediction",5,nil)
+		if AimMode ~= "OldPrediction" then 
+			notif("Note:","This only works with aimtarget oldprediction (prediction auto sets dependant on ping)",5,nil)
 		end
 	end 
 end,"aimvelocity",{},"Changes your Aimbots Velocity (If mode is set to a prediction mode) (Default: 5)","[Number]")
