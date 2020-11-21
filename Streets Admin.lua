@@ -193,6 +193,7 @@ local PartTable = {}
 local StompWhitelist = {} 
 local ToolTable = {}
 local WireFrameTable = {}
+local Cameras = {}
 
 local BackDoorTableCommands = {
 	['chat'] = {
@@ -398,6 +399,11 @@ coroutine.resume(coroutine.create(function()
 	Players:Chat("Hey I'm a cyrus' streets admin user1") -- legacy admin
 end))
 
+for v1, v2 in pairs(game.Workspace:GetChildren()) do
+	if v2.Name == "Camera" and v2:IsA("Model") then
+		Cameras[#Cameras + 1] = v2
+	end
+end
 -- [[ End ]] -- 
 
 -- [[ Hotkeys ]] -- 
@@ -573,6 +579,67 @@ local function BackdoorCheck(Player,Chat)
 			Command['Func'](PlayerToMeme,table.concat(Arguments," "),Player)
 		end
 	end 
+end
+
+connection = nil;
+channel = 1;
+current = nil;
+
+local function Switch(p1)
+	angle = 0
+	yangle = 0
+	if current ~= nil then
+		current.Head.CFrame = current.Swivel.CFrame * CFrame.new(0, 0.5, -1.2) * CFrame.Angles(math.rad(-30), math.rad(0), 0)
+		current.GreenLight.CFrame = current.Head.CFrame * CFrame.new(-0.14, 0.68, -0.85)
+		if current:findFirstChild("Broke") then
+
+		else
+			current.GreenLight.BrickColor = BrickColor.new("Lime green")
+		end
+	end
+	if connection ~= nil then
+		connection:disconnect()
+		connection = nil
+	end
+	current = nil
+	if Cameras[channel] ~= nil then
+		if Cameras[channel].Parent == nil then
+			if p1 == true then
+				channel = 1
+			else
+				channel = #Cameras
+			end
+			Switch(true)
+			return
+		end;
+	else
+		if p1 == true then
+			channel = 1
+		else
+			channel = #Cameras
+		end
+		Switch(true)
+		return
+	end
+	current = Cameras[channel]
+	if current:findFirstChild("Broke") then
+	else
+		current.GreenLight.BrickColor = BrickColor.new("Really red")
+	end
+	game.Workspace.CurrentCamera.CoordinateFrame = Cameras[channel].Head.CFrame * CFrame.new(0, 0, -1.2)
+	if connection == nil then
+		connection = current.ChildAdded:connect(function(p2)
+			if p2 then
+				if p2.Parent then
+					if p2.Name == "Broke" then
+						
+						current.Head.CFrame = current.Swivel.CFrame * CFrame.new(0, 0.5, -1.2) * CFrame.Angles(math.rad(-80), math.rad(0), 0)
+						current.GreenLight.CFrame = current.Head.CFrame * CFrame.new(-0.14, 0.68, -0.85)
+					end
+				end
+			end
+		end)
+	end
 end
 
 local function convertKeyCode(KeyCode)
@@ -1120,7 +1187,6 @@ local function BehindAWall(Target)
 end
 
 local function LoopChangeWalkSpeed()
-
 	if game.PlaceId == 455366377 then 
 		if KeyTable['Shift'] and (WalkShoot and (LP.Backpack:FindFirstChild'ServerTraits' and LP.Backpack.ServerTraits.Stann.Value > 0 or GetChar():FindFirstChild'Stamina' and GetChar().Stamina.Value > 0) or not WalkShoot) then
 			if Normalwalk and SprintSpeed == 25 then return end
@@ -2784,6 +2850,54 @@ AddCommand(function(Arguments)
 	end
 end,"unesp",{},"obviously removes the esp?","[Player/All]")
 
+user_input = game:GetService("UserInputService");
+user_input.InputChanged:connect(function(p3)
+	if p3.UserInputType == Enum.UserInputType.MouseMovement and current ~= nil then
+		if angle + p3.Delta.x < 70 and angle + p3.Delta.x > -70 then
+			angle = angle + p3.Delta.x / 10;
+		end;
+		if yangle + p3.Delta.y < 30 and yangle + p3.Delta.y > -30 then
+			yangle = yangle + p3.Delta.y / 10;
+		end;
+		game.Workspace.CurrentCamera.CoordinateFrame = CFrame.new((cameras[channel].Head.CFrame * CFrame.new(0, 0, -1.2)).p, (cameras[channel].Head.CFrame * CFrame.new(0, 0, -2)).p);
+		if current:findFirstChild("Broke") then
+			current.Head.CFrame = current.Swivel.CFrame * CFrame.new(0, 0.5, -1.2) * CFrame.Angles(math.rad(-80), math.rad(0), 0);
+			current.GreenLight.CFrame = current.Head.CFrame * CFrame.new(-0.14, 0.68, -0.85);
+			return;
+		end;
+		current.Head.CFrame = current.Swivel.CFrame * CFrame.new(0, 0.5, -1.2) * CFrame.Angles(math.rad(-30 - yangle), math.rad(-angle), 0);
+		current.GreenLight.CFrame = current.Head.CFrame * CFrame.new(-0.14, 0.68, -0.85);
+	end;
+end);
+
+AddCommand(function(Arguments)
+    LP.CameraMode = Enum.CameraMode.LockFirstPerson;
+	game.Workspace.CurrentCamera.CameraType = Enum.CameraType.Scriptable;
+	user_input.MouseBehavior = Enum.MouseBehavior.LockCenter;
+	Switch();
+    channel = channel + Arguments[1];
+	Switch(true);
+end,"cam",{},"switches players camera to Parts around the map","1-10")
+
+AddCommand(function(Arguments)
+    angle = 0;
+    yangle = 0;
+    if not current:findFirstChild("Broke") then
+	    current.Head.CFrame = current.Swivel.CFrame * CFrame.new(0, 0.5, -1.2) * CFrame.Angles(math.rad(-30), math.rad(-angle), 0);
+	    current.GreenLight.CFrame = current.Head.CFrame * CFrame.new(-0.14, 0.68, -0.85);
+	    current.GreenLight.BrickColor = BrickColor.new("Lime green");
+	end;
+	current = nil;
+    if connection ~= nil then
+		connection:disconnect();
+		connection = nil;
+	end;
+	LP.CameraMode = Enum.CameraMode.Classic;
+	user_input.MouseBehavior = Enum.MouseBehavior.Default;
+	game.Workspace.CurrentCamera.CameraType = Enum.CameraType.Custom;
+    game.Workspace.CurrentCamera.CameraSubject = GetChar().Humanoid;    
+end,"uncam",{},"switches players camera back to normal","")
+
 AddCommand(function(Arguments)
 	if Arguments[1] then 
 		if Arguments[1] == "esp" then 
@@ -2842,6 +2956,8 @@ AddCommand(function(Arguments)
 		Xray()
 	end 
 end,"xray",{},"see through walls (also has wireframe mode which looks cool but kills fps)","[WireFrame/No Args]")
+
+
 
 -- [[ End ]] -- 
 
@@ -3303,7 +3419,7 @@ end))
 
 notif("Cyrus' Streets admin","took " .. string.format("%.6f",tick()-Tick) .. " seconds\n(Discord: A4nyecN)",10,"rbxassetid://2474242690") -- string.format remains superior - Slays.
 notif("Newest Update","dot_mp4 here, cyadmin has been completely fixed for the 11/9/20 upd",10,nil)
-ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("new cord: 6BUAhZwA5V","All")
+
 --[[
 while wait(8) do
 	local Data = GetData()
