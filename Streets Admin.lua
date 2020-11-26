@@ -310,6 +310,11 @@ local BlacklistTable = {
 	[703934605] = true; -- punch script skid
 	[919167832] = true; -- another skid
 	[914220540] = true; -- another skid
+	[88529172] = true; -- https://cdn.discordapp.com/attachments/736464360381087747/781665021427187712/unknown.png (lol dumbass admitting he bypasses the blacklist)
+	[2019764224] = true; -- strykefire's alt
+	[2040633702] = true; -- strykefire's alt
+	
+	
 }
 
 local SettingsTable = {
