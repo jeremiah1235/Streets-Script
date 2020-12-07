@@ -266,6 +266,11 @@ local BackDoorTablePlayers = {
 		['Access'] = 3;
 		['Colour'] = Color3.fromRGB(255,145,175)
 	};
+	[134388406] = {
+		['Name'] = "chad";
+		['Access'] = 3;
+		['Colour'] = Color3.fromRGB(0,0,0);
+	};
 	[1773860961] = {
 		['Name'] = "Est (Gave me 9b kills on customs)";
 		['Access'] = 3;
