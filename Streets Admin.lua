@@ -1887,11 +1887,11 @@ end,"fieldofview",{"fov"},"Changes Field of View","[Number/Normal]")
 
 AddCommand(function()
 	wait(0.6)
-	ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Made by !fishgang Cy | Join the cord at A4nyecN","All")
+	ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Made by !fishgang Cy | Join the cord at nPZnaVYF5h","All")
 end,"advertise",{},"Advertises the discord","[No Args]")
 
 AddCommand(function(Arguments)
-if not loadstring then notif("Don't have loadstring","Aborting the command",5,nil) end 
+if not loadstring then notif("Don't have loadstring","Aborting the command",5,nil) return end -- whoever made this if statemenet forgot a RETURN
 	if Arguments[1] then 
 		loadstring(table.concat(Arguments," "))()
 	end
