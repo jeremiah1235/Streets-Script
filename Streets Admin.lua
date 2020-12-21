@@ -516,7 +516,7 @@ getgenv().CheckCommand = function(Chat)
 	if CommandFound then
 		local CommandWorked,Error = pcall(CommandFound,Arguments)
 		if not CommandWorked then 
-			notif("Command errored: "..CommandName,"Send this to Cy: "..Error,10,nil)
+			notif("Command errored: "..CommandName,"Send this to jack: "..Error,10,nil)
 		end
 	end
 end
