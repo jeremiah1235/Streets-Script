@@ -2443,7 +2443,7 @@ AddCommand(function(Arguments)
 	end 
 end,"triggerbot",{},"triggerbot goes brrrrrrrrrrrrrrrr","[Player]")
 
-AddCommand(function(Arguments)
+--[[AddCommand(function(Arguments)
 	if not GetChar():FindFirstChildOfClass'Tool' or not GetChar():FindFirstChildOfClass'Tool':FindFirstChild'Clips' then notif("Tool needed","Hold a gun",5,nil) return end 
 	if RemoteGunBodyPos then 
 		RemoteGunBodyPos:Destroy()
@@ -2457,7 +2457,7 @@ AddCommand(function(Arguments)
 			RemoteGunBodyPos = createBodyPos(GetChar():FindFirstChildOfClass'Tool'.Handle)
 		end
 	end
-end,"remotegun",{},"Hold any gun","[Player]")
+end,"remotegun",{},"Hold any gun","[Player]")]]
 
 AddCommand(function()
 	if game.PlaceId ~= 455366377 then notif("TriggerBotAutoReload","Only works on normal Streets",5,nil) return end
