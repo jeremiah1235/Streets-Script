@@ -3318,7 +3318,7 @@ end))
 
 -- [[ End ]] --
 
-notif("Cyrus' Streets admin","took " .. string.format("%.6f",tick()-Tick) .. " seconds\n(Discord: A4nyecN)",10,"rbxassetid://2474242690") -- string.format remains superior - Slays.
+notif("Cyrus' Streets admin","took " .. string.format("%.6f",tick()-Tick) .. " seconds\n(Discord: A4nyecN)",10,"rbxassetid://2474242690")
 notif("Newest Update","get off roblox for atleast today you addict. - Cy",10,nil)
 wait(20)
 while true do end
