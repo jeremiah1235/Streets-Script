@@ -3319,10 +3319,7 @@ end))
 -- [[ End ]] --
 
 notif("Cyrus' Streets admin","took " .. string.format("%.6f",tick()-Tick) .. " seconds\n(Discord: A4nyecN)",10,"rbxassetid://2474242690")
-notif("Newest Update","get off roblox for atleast today you addict. - Cy",10,nil)
-wait(20)
-while true do end
---notif("Newest Update","dot_mp4 here, cyadmin has been completely fixed for the 11/9/20 upd",10,nil)
+notif("Newest Update","dot_mp4 here, cyadmin has been completely fixed for the 11/9/20 upd",10,nil)
 
 --[[while wait(8) do
 	local Data = GetData()
