@@ -323,7 +323,7 @@ local BlacklistTable = {
 	[2019764224] = true; -- strykefire's alt
 	[2040633702] = true; -- strykefire's alt
 	[1977361802] = true; -- furry
-	
+	[35810243] = true; -- trolled - Cy
 	
 }
 
